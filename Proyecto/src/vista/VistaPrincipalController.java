@@ -24,7 +24,10 @@ import proyecto.Lector;
  * @author braya
  */
 public class VistaPrincipalController implements Initializable {
-
+    
+    Knn irisKnn;
+    List<Iris> irisDataset;
+    Lector archivo_iris;
     @FXML
     private TextField sepalLenghtField;
     @FXML
@@ -35,11 +38,9 @@ public class VistaPrincipalController implements Initializable {
     private Button calcularBtn;
     @FXML
     private TextField petalWidthField;
-    Knn irisKnn;
-    List<Iris> irisDataset;
-    Lector archivo_iris;
     @FXML
     private TextArea mostrarInfo;
+
 
     public VistaPrincipalController() {
         
@@ -54,6 +55,10 @@ public class VistaPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //this.sepalLenghtField = new TextField();
+        //this.sepalWidthField = new TextField();
+        //this.petalLenghtField = new TextField();
+        //this.petalWidthField = new TextField();
         this.calcularBtn = new Button();
 
 
@@ -72,7 +77,7 @@ public class VistaPrincipalController implements Initializable {
             double valor3=Double.parseDouble(petalLenght);
             double valor4=Double.parseDouble(petalWidth);
              Iris CasoDePrueba = new Iris(valor1,valor2,valor3,valor4,null);
-             CasoDePrueba.setIrisType(irisKnn.getTipoIris(1, irisDataset, CasoDePrueba));
+             CasoDePrueba.setIrisType(irisKnn.getTipoIris(3, irisDataset, CasoDePrueba));
              String res=CasoDePrueba.toString();
             System.out.println(res);
             this.mostrarInfo.clear();

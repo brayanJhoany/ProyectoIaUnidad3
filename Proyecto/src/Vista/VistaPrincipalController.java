@@ -26,7 +26,6 @@ import proyecto.Lector;
  */
 public class VistaPrincipalController implements Initializable {
 
-  
     @FXML
     private TextField sepalLenghtField;
     @FXML
@@ -37,15 +36,17 @@ public class VistaPrincipalController implements Initializable {
     private Button calcularBtn;
     @FXML
     private TextField petalWidthField;
-    Knn irisKnn ;
-    List<Iris> irisDataset ;
+    Knn irisKnn;
+    List<Iris> irisDataset;
+    Lector archivo_iris;
     @FXML
     private TextArea mostrarInfo;
 
     public VistaPrincipalController() {
+        this.archivo_iris = new Lector("iris.txt");
+        this.irisDataset = archivo_iris.GetListaIris();
+        this.irisKnn = new Knn();
     }
-            
-            
 
     /**
      * Initializes the controller class.
@@ -59,24 +60,28 @@ public class VistaPrincipalController implements Initializable {
         this.calcularBtn = new Button();
         this.mostrarInfo = new TextArea();
 
-        
-    }    
+    }
 
     @FXML
     private void cancularIris(ActionEvent event) {
-            String sepalLenght = this.sepalLenghtField.getText();
-            String sepalWidth = this.sepalWidthField.getText();
-            String petalLenght = this.petalLenghtField.getText() ;
-            String petalWidth = this.petalWidthField.getText();
-        if( sepalLenght != null && sepalWidth != null && petalLenght != null && petalWidth != null){
-            
-            System.out.println("Hay info");
-            System.out.println("sepalLenght: "+ sepalLenght );
-            return ;
+        String sepalLenght = this.sepalLenghtField.getText();
+        String sepalWidth = this.sepalWidthField.getText();
+        String petalLenght = this.petalLenghtField.getText();
+        String petalWidth = this.petalWidthField.getText();
+        if (!sepalLenght.isEmpty() && !sepalWidth.isEmpty() && !petalLenght.isEmpty() && !petalWidth.isEmpty()) {
+
+            double valor1 = Double.parseDouble(sepalLenght);
+            double valor2=Double.parseDouble(sepalWidth);
+            double valor3=Double.parseDouble(petalLenght);
+            double valor4=Double.parseDouble(petalWidth);
+            //Iris CasoDePrueba = new Iris(valor1,valor2,valor3,valor4,null);
+             Iris CasoDePrueba = new Iris(4.5,2.3,1.3,0.3,null);
+             CasoDePrueba.setIrisType(irisKnn.getTipoIris(3, irisDataset, CasoDePrueba));
+            System.out.println(CasoDePrueba.toString());
+            //this.mostrarInfo.setText(CasoDePrueba.toString());
+            return;
         }
         System.out.println("No hay info");
     }
-    
 
-    
 }

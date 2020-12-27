@@ -5,29 +5,37 @@
  */
 package proyecto;
 
+import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 /**
  *
  * @author braya
  */
-
-
 import java.util.List;
 
-public class Main {
+public class Main extends Application {
 
-    public static void main(String[] args) {
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("/Vista/VistaPrincipal.fxml"));
+        Pane ventana = (Pane) loader.load();
 
-        Lector archivo_iris = new Lector("iris.txt");
-
-        List<Iris> irisDataset =  archivo_iris.GetListaIris();
-
-        Knn irisKnn = new Knn();
-
-        Iris CasoDePrueba = new Iris(4.5,2.3,1.3,0.3,null);
-
-        CasoDePrueba.setIrisType(irisKnn.getTipoIris(3, irisDataset, CasoDePrueba));
-
-        System.out.println(CasoDePrueba.toString());
-
+        Scene scene = new Scene(ventana);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }

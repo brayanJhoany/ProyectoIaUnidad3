@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.VistaPrincipalController">
+   <children>
+      <Text layoutX="296.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iris">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="sepalLenghtField" layoutX="54.0" layoutY="118.0" />
+      <TextField fx:id="sepalWidthField" layoutX="379.0" layoutY="118.0" />
+      <TextField fx:id="petalLenghtField" layoutX="54.0" layoutY="200.0" />
+      <TextField fx:id="petalWidthField" layoutX="378.0" layoutY="199.0" prefHeight="26.0" prefWidth="149.0" />
+      <Button fx:id="calcularBtn" layoutX="226.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancularIris" prefHeight="43.0" prefWidth="175.0" text="Verificar" />
+      <Text layoutX="94.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sepal Lenght " />
+      <Text layoutX="426.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sepal Width " />
+      <Text layoutX="97.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Petal Lenght" />
+      <Text layoutX="428.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Petal Width" />
+      <TextArea fx:id="mostrarInfo" layoutX="87.0" layoutY="250.0" prefHeight="68.0" prefWidth="452.0" />
+   </children>
+</AnchorPane>
